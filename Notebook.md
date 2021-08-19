@@ -30,11 +30,13 @@ data_wide <- data %>%
 ## Classons les réponses possibles à chaque critère
 
 ``` r
-ordre_reponses <- c("Never", "Mandatory", "Sometimes", "Always")
-
 cols <- c("GenTree", "Phénotypage.DROPS", "Carbone.talveg", "Données.Lidar", "Herbier.de.Guyane", "Rhizotron", "Guyadiv", "Allométrie", "Carbone.du.sol", "Génotypage.DROPS")
 
-data_wide[,cols] <- lapply(data_wide[,cols], factor, levels = c("Never", "Mandatory", "Sometimes", "Always"))
+data_wide[,cols] <- lapply(data_wide[,cols], factor, levels = c("Never", "Mandatory", "Sometimes", "Always"), exclude = "", ordered = T)
+
+data_wide[,cols] <- lapply(data_wide[,cols], fct_explicit_na, na_level = "NA")
+
+data_wide[,cols] <- lapply(data_wide[,cols], factor, levels = c("NA", "Never", "Mandatory", "Sometimes", "Always"), exclude = "", ordered = T)
 ```
 
 ## Passons de données wide à des données narrow
