@@ -1,7 +1,7 @@
 Analyse des grilles d’évaluation RDA SHARC
 ================
 Antoine Blanchard
-19/08/2021
+23/08/2021
 
 -   [Import et nettoyage des données](#import-et-nettoyage-des-données)
 -   [Classons les réponses possibles à chaque
@@ -68,44 +68,140 @@ theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
 ``` r
 data_narrow %>%
-  filter (Cluster == "Findable") %>%
-    ggplot(aes(x = Evaluation, fill = Dataset)) + geom_bar() + 
-  facet_grid(Cluster ~ Name) +
-  theme_bw()
+  filter(Dataset == "Allométrie") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
 ```
 
-![](Notebook_files/figure-gfm/barplot_parChamp-1.png)<!-- -->
+![](Notebook_files/figure-gfm/tous_les_barplots-1.png)<!-- -->
 
 ``` r
 data_narrow %>%
-  filter (Cluster == "Accessible") %>%
-    ggplot(aes(x = Evaluation, fill = Dataset)) + geom_bar() + 
-  facet_grid(Cluster ~ Name) +
-  theme_bw()
+  filter(Dataset == "Carbone.du.sol") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
 ```
 
-![](Notebook_files/figure-gfm/barplot_parChamp-2.png)<!-- -->
+![](Notebook_files/figure-gfm/tous_les_barplots-2.png)<!-- -->
 
 ``` r
 data_narrow %>%
-  filter (Cluster == "Interoperable") %>%
-    ggplot(aes(x = Evaluation, fill = Dataset)) + geom_bar() + 
-  facet_grid(Cluster ~ Name) +
-  theme_bw()
+  filter(Dataset == "Carbone.talveg") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
 ```
 
-![](Notebook_files/figure-gfm/barplot_parChamp-3.png)<!-- -->
+![](Notebook_files/figure-gfm/tous_les_barplots-3.png)<!-- -->
 
 ``` r
 data_narrow %>%
-  filter (Cluster == "Reusable") %>%
-    ggplot(aes(x = Evaluation, fill = Dataset)) + geom_bar() + 
-  facet_grid(Cluster ~ Name) +
-  theme_bw()
+  filter(Dataset == "GenTree") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
 ```
 
-![](Notebook_files/figure-gfm/barplot_parChamp-4.png)<!-- -->
+![](Notebook_files/figure-gfm/tous_les_barplots-4.png)<!-- -->
 
 ``` r
-# Agrandir : https://stackoverflow.com/questions/49110877/how-to-adjust-facet-size-manually/49225527
+data_narrow %>%
+  filter(Dataset == "Phénotypage.DROPS") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
 ```
+
+![](Notebook_files/figure-gfm/tous_les_barplots-5.png)<!-- -->
+
+``` r
+data_narrow %>%
+  filter(Dataset == "Données.Lidar") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
+```
+
+![](Notebook_files/figure-gfm/tous_les_barplots-6.png)<!-- -->
+
+``` r
+data_narrow %>%
+  filter(Dataset == "Herbier.de.Guyane") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
+```
+
+![](Notebook_files/figure-gfm/tous_les_barplots-7.png)<!-- -->
+
+``` r
+data_narrow %>%
+  filter(Dataset == "Rhizotron") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
+```
+
+![](Notebook_files/figure-gfm/tous_les_barplots-8.png)<!-- -->
+
+``` r
+data_narrow %>%
+  filter(Dataset == "Guyadiv") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
+```
+
+![](Notebook_files/figure-gfm/tous_les_barplots-9.png)<!-- -->
+
+``` r
+data_narrow %>%
+  filter(Dataset == "Génotypage.DROPS") %>%
+  ggplot(aes(x = Evaluation, fill = Cluster)) + 
+  geom_bar(position = position_stack(reverse = TRUE)) +
+  facet_wrap(~ Dataset, ncol = 4) +
+  scale_fill_manual(values = brewer.pal(4, "Greens")) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(legend.position = "none")
+```
+
+![](Notebook_files/figure-gfm/tous_les_barplots-10.png)<!-- -->
